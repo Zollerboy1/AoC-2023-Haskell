@@ -9,7 +9,7 @@ part1 :: [String] -> [[Int]]
 part1 = map $ mapMaybe $ readMaybe . pure
 
 part2 :: [String] -> [[Int]]
-part2 = map $ map ((`mod` 10) . (+1)) . mapMaybe ((`findIndex` numbers) . flip isPrefixOf) . init . tails
+part2 = map $ map ((`mod` 10) . succ) . mapMaybe ((`findIndex` numbers) . flip isPrefixOf) . init . tails
 
 get :: [[Int]] -> Int
 get = sum . map ((+) <$> (*10) . head <*> last)
